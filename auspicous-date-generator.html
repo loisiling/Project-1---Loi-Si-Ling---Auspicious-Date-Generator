@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auspicious Date Selection</title>
+    <link rel="stylesheet" href="calendar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet">   <script defer src="/Project/auspicious-date-generator.js"></script>
+    <style>
+
+        *{
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .imageContainer {
+            height: 30vw;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .textContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(174, 32, 32);
+            width: 40%;
+            height: auto;
+            box-sizing: border-box;
+            position: absolute;
+        }
+
+        .title {
+            object-fit: contain;
+            text-align: center;
+            font-size: 2vw;
+            /* text-shadow: 
+            -1px 1px 0px red,
+            2px -2px 0px red,
+            2px 2px 0px red,
+            -1px -1px 0px red; */
+            color: white;
+        }
+
+        .dividingLine {
+            height: 0.5vw;
+            background-color: rgb(174, 32, 32);
+        }
+
+        .secondContainer {
+            padding-left: 10%;
+            padding-right: 10%;
+            padding-top: 1%;
+            padding-bottom: 3%;
+        }
+
+        .titleStyle {
+            font-size: 2vw;
+            text-align: center;
+            color: #595959;
+        }
+
+        #contentStyle {
+            font-size: 1.5vw;
+            text-align: center;
+            color: #595959;
+        }
+
+        .thirdContainer {
+            text-align: center;
+        }
+
+        #birthdate {
+            box-sizing: border-box;
+            width: 20%;
+            height: 50px;
+            border-radius: 8px;
+            font-size: 1.5vw;
+            color: black;
+        }
+
+        #submit {
+            box-sizing: border-box;
+            width: 10%;
+            height: 50px;
+            border-radius: 8px;
+            font-size: 1.5vw;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+
+        #submit:hover {
+            background-color: rgb(174, 32, 32);
+            color: white;
+        }
+
+        .radioButtons {
+            text-align: center;
+        }
+
+        .results {
+            border: #595959 solid 0.3vw;
+            height: 300px;
+            margin-left: 25%;
+            margin-right: 25%;
+            margin-top: 1%;
+            margin-bottom: 3%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="imageContainer">
+        <img src="/Project/chinese-new-year-calendar.jpg" alt="Chinese New Year Calendar">
+        <div class="textContainer">
+            <div class="title">
+                <h1 style="font-weight: 500;"><b>AUSPICIOUS DATE SELECTION</b></h1>
+            </div>
+        </div>
+    </div>
+    <div class="dividingLine"></div>
+    <div class="secondContainer">
+        <h1 class="titleStyle">Get Your Personal Auspicious Dates (May 2022):</h1>
+        <p id="contentStyle"> Date Selection is a classical chinese practice, with earliest mentions in the era of the
+            Han Dynasty
+            (206BC - 220AD). This page generates your personal auspicious dates based on your Bazi (Determined by
+            your birthdate) in combination with the Ancient Chinese 10,000 year calendar.</p>
+        <br>
+        <div class="thirdContainer">
+            <label for="birthday" style="font-size: 1.5vw; color: black; "> Date Of Birth: </label>
+            <input type="date" id="birthdate" name="birthday">
+            <input type="submit" id="submit" name="submit">
+        </div>
+    </div>
+    </div>
+    <div class="forthContainer">
+        <h1 class="titleStyle">Results (May 2022):</h1>
+        <div class="radioButtons">
+            <input type="radio" id="inauspicious" name="radio" value="inauspicious" disabled>
+            <label for="inauspicious" style="font-size: 1.5vw; color: #595959;"> Days You Must Avoid</label>
+            <span class="checkmark"></span>
+            <input type="radio" id="auspicious" name="radio" value="auspicious" disabled>
+            <label for="auspicious" style="font-size: 1.5vw; color: #595959;"> Auspicious Days</label>
+            <span class="checkmark"></span>
+            <input type="radio" id="others" name="radio" value="others" disabled>
+            <label for="others" style="font-size: 1.5vw; color: #595959;"> Others (Average Days)</label>
+            <span class="checkmark"></span>
+        </div>
+        <div class="results">
+            <h1 style="color: #595959; font-size: 2vw; text-align: center;"><u>Dates:</u></h1>
+            <p id="resultsHere" style="font-size: 1.2vw;"></p>
+        </div>
+    </div>
+
+    <div class=fifthContainer>
+        <div class="calendar">
+            <div class="month">
+                <i class="fa fa-chevron-left prev"></i>
+                <div class="date">
+                    <h1></h1>
+                    <p></p>
+                </div>
+                <i class="fa fa-chevron-right next"></i>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
